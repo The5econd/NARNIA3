@@ -215,7 +215,7 @@ public class AdminHotel {
     void AgregarCliente(){
         boolean existeCliente=false;
         Cliente nuevoCliente = new Cliente();
-        nuevoCliente.InfoCliente();
+        nuevoCliente.getInfoCliente();
         for(Cliente c:clientes){
             if(c.getDui().equals(nuevoCliente.getDui())){
                 existeCliente=true;
