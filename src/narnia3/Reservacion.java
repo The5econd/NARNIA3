@@ -93,8 +93,15 @@ public class Reservacion {
     }
 
     public Reservacion() {
+        if(paquetes == null || paquetes.isEmpty()){
+            Paquete paqueteBasico = new Paquete("Basico","Acceso a la pisina y acceso a internet ilimitado",10);
+            paquetes.add(paqueteBasico);
+            Paquete paquetePremium = new Paquete("Premium","acceso al buffet de desayuno, acceso ilimitado a la pisina, servicio a la habitacion,"
+                    + "acceso ilimitado al minibar y acceso a internet ilimitado",150);
+            paquetes.add(paquetePremium);
+        }
     }
-
+    
     public Reservacion(String infoHuesped, int numeroHabitacion, int diasReservacion, double costoNoche, double costoTotal, String nombrePaquete) {
         this.infoHuesped = infoHuesped;
         this.numeroHabitacion = numeroHabitacion;
@@ -138,7 +145,7 @@ public class Reservacion {
     
     public void mostrarPaquete(){
         paquetes.forEach((Paquete paque) -> {
-            System.out.println(paque.nombrePaquete+" "+paque.contenidoPaquete+" "+paque.precioPaquete);
+            System.out.println(paque.nombrePaquete+" "+paque.contenidoPaquete+"  $"+paque.precioPaquete);
         });
     }
     
@@ -146,28 +153,14 @@ public class Reservacion {
         Scanner sc = new Scanner(System.in);
         String nuevoNombrePaquete,contenidoPaquete;
         double precioPaquete;
-        //Como en el hotel ya se encuentran 2 paquetes predeterminados, si estos no estan todavia se agregan
-        if(paquetes == null || paquetes.isEmpty()){
-            Paquete paqueteBasico = new Paquete("Basico","Acceso a la pisina y acceso a internet ilimitado",10);
-            paquetes.add(paqueteBasico);
-            Paquete paquetePremium = new Paquete("Premium","acceso al buffet de desayuno, acceso ilimitado a la pisina, servicio a la habitacion,"
-                    + "acceso ilimitado al minibar y acceso a internet ilimitado",150);
-            paquetes.add(paquetePremium);
-        }
-        else{
-            System.out.println("Introduzca el nombre del paquete: ");
-            nuevoNombrePaquete = sc.nextLine();
-
-            System.out.println("Introduzca el contenido del paquete: ");
-            contenidoPaquete = sc.nextLine();
-
-            System.out.println("Introduzca el precio del paquete: ");
-            precioPaquete = sc.nextDouble();
-
-            Paquete nuevoPaquete = new Paquete(nuevoNombrePaquete,contenidoPaquete,precioPaquete);
-
-            paquetes.add(nuevoPaquete);
-        }
+        System.out.println("Introduzca el nombre del paquete: ");
+        nuevoNombrePaquete = sc.nextLine();
+        System.out.println("Introduzca el contenido del paquete: ");
+        contenidoPaquete = sc.nextLine();
+        System.out.println("Introduzca el precio del paquete: ");
+        precioPaquete = sc.nextDouble();
+        Paquete nuevoPaquete = new Paquete(nuevoNombrePaquete,contenidoPaquete,precioPaquete);
+        paquetes.add(nuevoPaquete);
     }
     
     private double SeleccionarPaquete(String Nombre){
