@@ -60,7 +60,7 @@ public class NARNIA3 {
                 break;
             case 7:
                 CLIENTE.HacerReservacion();
-                RES.PrecioPaquete();
+                //RES.PrecioPaquete();
                 break;
             case 8:
                 CLIENTE.CancelarReservacion();
