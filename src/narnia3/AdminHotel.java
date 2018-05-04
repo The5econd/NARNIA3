@@ -118,8 +118,6 @@ public class AdminHotel {
                         h.setPrecioHab(nuevoPrecio);
                         break;
                 }
-            }else{
-                System.out.println("La habitacion buscada no existe");
             }
         }
     }
@@ -139,19 +137,16 @@ public class AdminHotel {
                 for(Habitacion h:habitaciones){
                     if(idHabitacion.equals(h.getIDhabitacion())){
                         h.setEstado(true);
-                    }else{
-                        System.out.println("Este cuarto no existe");
                     }
                 }
                 break;
             case 2:
-                System.out.println("Ingrese el codigo de la habitacion a habiliar:");
+                System.out.println("Ingrese el codigo de la habitacion a deshabilitar:");
                 idHabitacion=input.next();
                 for(Habitacion h:habitaciones){ 
                     if(idHabitacion.equals(h.getIDhabitacion())){
                         h.setEstado(false);
-                    }else{
-                        System.out.println("Este cuarto no existe");
+                        System.out.println(h.getIDhabitacion()+" ha sido deshabilitada");
                     }
                 }
                 break;
