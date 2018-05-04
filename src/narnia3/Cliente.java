@@ -132,9 +132,8 @@ public class Cliente {
             reservacion.setNumeroHabitacion(numHabitacion);
             reservacion.setDiasReservacion(diasReservacion);
             reservacion.setPisoHabitacion(piso);
-            reservacion.setNombrePaquete(nombrePaquete);
             reservaciones.add(reservacion);
-            //admin.HabilitarHabitacion();
+            
         } else {
             admin.CrearHabitaciones();
             System.out.println("En que piso le gustaria la habitacion(A,B,C,D,E,F): ");
@@ -153,7 +152,7 @@ public class Cliente {
             reservacion.setCostoNoche(admin.CalcularPrecioHabitacion(numHabitacion, piso));
             reservacion.setNombrePaquete(null);
             reservaciones.add(reservacion);
-            //admin.HabilitarHabitacion();
+            
 
         }
 
