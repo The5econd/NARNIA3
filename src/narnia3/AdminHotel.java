@@ -20,7 +20,58 @@ public class AdminHotel {
         CrearHabitaciones();
     }
 
-    //GETTERS Y SETTERS
+//EL MENU PRINCIPAL
+    public void menu(){
+        int opcion;
+        
+//SE IMPRIME EL MENU
+        System.out.println("***************MENU***************");
+        System.out.println("1.Agregar Cliente");
+        System.out.println("2.Habilitar habitaciones");
+        System.out.println("3.Habilitar piso");
+        System.out.println("4.Modificar habitacion");
+        System.out.println("5.Mostrar reservaciones de la semana");
+        System.out.println("6.Mostrar habitaciones disponibles");
+        System.out.println("7.Hacer reservacion");
+        System.out.println("8.Cancelar reservacion");
+        System.out.println("9.Modificar reservacion");
+        
+        opcion=input.nextInt();
+        switch(opcion){
+            case 1:
+                AgregarCliente();
+            case 2:
+                HabilitarHabitacion();
+                break;
+            case 3:
+                HabilitarPiso();
+                break;
+            case 4:
+                ModificarHabitacion();
+                break;
+            case 5:
+                AgregarCliente();
+                break;
+            case 6:
+                MostrarHabitacionesDisponibles();
+                break;
+            case 7:
+                HacerReservacion();
+                //RES.PrecioPaquete();
+                break;
+            case 8:
+                CancelarReservacion();
+                break;
+            case 9:
+                ModificarReservacion();
+                break;
+            default:
+                System.out.println("Ha ingresado una opcion invalida");
+             
+            }
+    }    
+
+//GETTERS Y SETTERS
     public int getNumeroHabitaciones() {
         return numeroHabitaciones;
     }
@@ -220,6 +271,39 @@ public class AdminHotel {
             System.out.println("Este cliente ya existia en los registros del hotel");
         }else{
             clientes.add(nuevoCliente);
+        }
+    }
+    
+    public void HacerReservacion(){
+        String duiCliente;
+        System.out.println("Ingrese el dui del cliente que quiera hacer la reservacion: ");
+        duiCliente=input.nextLine();
+        for(Cliente c:clientes){
+            if(duiCliente.equals(c.getDui())){
+                c.HacerReservacion();
+            }
+        }
+    }
+    
+    public void ModificarReservacion(){
+        String duiCliente;
+        System.out.println("Ingrese el dui del cliente que quiera modificar la reservacion: ");
+        duiCliente=input.nextLine();
+        for(Cliente c:clientes){
+            if(duiCliente.equals(c.getDui())){
+                c.ModificarReservacion();
+            }
+        }
+    }
+    
+    public void CancelarReservacion(){
+        String duiCliente;
+        System.out.println("Ingrese el dui del cliente que quiera cancelar la reservacion: ");
+        duiCliente=input.nextLine();
+        for(Cliente c:clientes){
+            if(duiCliente.equals(c.getDui())){
+                c.CancelarReservacion();
+            }
         }
     }
 }
