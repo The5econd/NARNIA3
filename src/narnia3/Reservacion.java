@@ -17,7 +17,24 @@ public class Reservacion {
     public int diasReservacion;
     public double costoNoche;
     public double costoTotal;
+    public String nombrePaquete;
 
+    public String getNombrePaquete() {
+        return nombrePaquete;
+    }
+
+    public void setNombrePaquete(String nombrePaquete) {
+        this.nombrePaquete = nombrePaquete;
+    }
+
+    public ArrayList<Paquete> getPaquetes() {
+        return paquetes;
+    }
+
+    public void setPaquetes(ArrayList<Paquete> paquetes) {
+        this.paquetes = paquetes;
+    }
+    
     public String getInfoHuesped() {
         return infoHuesped;
     }
@@ -61,12 +78,13 @@ public class Reservacion {
     public Reservacion() {
     }
 
-    public Reservacion(String infoHuesped, int numeroHabitacion, int diasReservacion, double costoNoche, double costoTotal) {
+    public Reservacion(String infoHuesped, int numeroHabitacion, int diasReservacion, double costoNoche, double costoTotal, String nombrePaquete) {
         this.infoHuesped = infoHuesped;
         this.numeroHabitacion = numeroHabitacion;
         this.diasReservacion = diasReservacion;
         this.costoNoche = costoNoche;
         this.costoTotal = costoTotal;
+        this.nombrePaquete = nombrePaquete;
     }
     
     public void CambiarPrecioPaquete(){
@@ -79,6 +97,25 @@ public class Reservacion {
                 double precioNuevo = sc.nextDouble();
                 paque.precioPaquete = precioNuevo;
             }
+            else{
+                System.out.println("El paquete que desea no existe o ya no esta disponible");
+            }
+        });
+    }
+    
+    public void CambiarContenidoPaquete(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("¿Que paquete desea cambiar? ");
+        String n = sc.nextLine();
+        paquetes.forEach((Paquete paque) -> {
+            if(paque.nombrePaquete.equals(n)){
+                System.out.println("Nuevo contenido del paquete: ");
+                String precioNuevo = sc.nextLine();
+                paque.contenidoPaquete = precioNuevo;
+            }
+            else{
+                System.out.println("El paquete que desea no existe o ya no esta disponible");
+            }
         });
     }
     
@@ -90,24 +127,33 @@ public class Reservacion {
     
     public void CrearPaquete(){  
         Scanner sc = new Scanner(System.in);
-        String nombrePaquete,contenidoPaquete;
+        String nuevoNombrePaquete,contenidoPaquete;
         double precioPaquete;
-        
-        System.out.println("Introduzca el nombre del paquete: ");
-        nombrePaquete = sc.nextLine();
-        
-        System.out.println("Introduzca el contenido del paquete: ");
-        contenidoPaquete = sc.nextLine();
-        
-        System.out.println("Introduzca el precio del paquete: ");
-        precioPaquete = sc.nextDouble();
-        
-        Paquete nuevoPaquete = new Paquete(nombrePaquete,contenidoPaquete,precioPaquete);
-        
-        paquetes.add(nuevoPaquete);
+        //Como en el hotel ya se encuentran 2 paquetes predeterminados, si estos no estan todavia se agregan
+        if(paquetes == null || paquetes.isEmpty()){
+            Paquete paqueteBasico = new Paquete("Basico","Acceso a la pisina y acceso a internet ilimitado",10);
+            paquetes.add(paqueteBasico);
+            Paquete paquetePremium = new Paquete("Premium","acceso al buffet de desayuno, acceso ilimitado a la pisina, servicio a la habitacion,"
+                    + "acceso ilimitado al minibar y acceso a internet ilimitado",150);
+            paquetes.add(paquetePremium);
+        }
+        else{
+            System.out.println("Introduzca el nombre del paquete: ");
+            nuevoNombrePaquete = sc.nextLine();
+
+            System.out.println("Introduzca el contenido del paquete: ");
+            contenidoPaquete = sc.nextLine();
+
+            System.out.println("Introduzca el precio del paquete: ");
+            precioPaquete = sc.nextDouble();
+
+            Paquete nuevoPaquete = new Paquete(nuevoNombrePaquete,contenidoPaquete,precioPaquete);
+
+            paquetes.add(nuevoPaquete);
+        }
     }
     
-    public double SeleccionarPaquete(){
+    private double SeleccionarPaquete(){
         Scanner sc = new Scanner(System.in);
         String Pack;
         System.out.println("¿Que paquete desea?");
@@ -119,5 +165,16 @@ public class Reservacion {
             }
         }
         return precio;
+    }
+    
+    public double PrecioPaquete(){
+        double precio = SeleccionarPaquete();
+        if(precio == -1){
+            System.out.println("Su paquete no fue encontrado");
+            return 0;
+        }
+        else{
+            return precio;
+        }
     }
 }
