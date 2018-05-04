@@ -23,7 +23,7 @@ public class AdminHotel {
 //EL MENU PRINCIPAL
     public void menu(){
         int opcion;
-        
+        boolean corriendo=true;
 //SE IMPRIME EL MENU
         System.out.println("***************MENU***************");
         System.out.println("1.Agregar Cliente");
@@ -35,40 +35,47 @@ public class AdminHotel {
         System.out.println("7.Hacer reservacion");
         System.out.println("8.Cancelar reservacion");
         System.out.println("9.Modificar reservacion");
-        
-        opcion=input.nextInt();
-        switch(opcion){
-            case 1:
-                AgregarCliente();
-            case 2:
-                HabilitarHabitacion();
-                break;
-            case 3:
-                HabilitarPiso();
-                break;
-            case 4:
-                ModificarHabitacion();
-                break;
-            case 5:
-                AgregarCliente();
-                break;
-            case 6:
-                MostrarHabitacionesDisponibles();
-                break;
-            case 7:
-                HacerReservacion();
-                //RES.PrecioPaquete();
-                break;
-            case 8:
-                CancelarReservacion();
-                break;
-            case 9:
-                ModificarReservacion();
-                break;
-            default:
-                System.out.println("Ha ingresado una opcion invalida");
-             
-            }
+        System.out.println("10.Modificar todas las habitaciones");
+        System.out.println("11.Salir");
+        while(corriendo){
+            opcion=input.nextInt();
+            switch(opcion){
+                case 1:
+                    AgregarCliente();
+                case 2:
+                    HabilitarHabitacion();
+                    break;
+                case 3:
+                    HabilitarPiso();
+                    break;
+                case 4:
+                    ModificarHabitacion();
+                    break;
+                case 5:
+                    AgregarCliente();
+                    break;
+                case 6:
+                    MostrarHabitacionesDisponibles();
+                    break;
+                case 7:
+                    HacerReservacion();
+                    //RES.PrecioPaquete();
+                    break;
+                case 8:
+                    CancelarReservacion();
+                    break;
+                case 9:
+                    ModificarReservacion();
+                    break;
+                case 10:
+                    ModificarHabitaciones();
+                    break;
+                case 11:
+                    corriendo=false;
+                default:
+                    System.out.println("Ha ingresado una opcion invalida");
+                }
+        }
     }    
 
 //GETTERS Y SETTERS
@@ -170,6 +177,17 @@ public class AdminHotel {
                         break;
                 }
             }
+        }
+    }
+    /**
+     * Modifica el precio de todas las habitaciones
+     */
+    public void ModificarHabitaciones(){
+        double nuevoPrecio;
+        System.out.println("Ingrese el nuevo precio para todas las habitaciones");
+        nuevoPrecio=input.nextDouble();
+        for(Habitacion h:habitaciones){
+            h.setPrecioHab(nuevoPrecio);
         }
     }
     /**
