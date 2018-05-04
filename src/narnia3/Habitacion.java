@@ -13,11 +13,11 @@ public class Habitacion {
     private double precioHabitacion;
     private String idHabitacion;
     boolean disponible;
-    
+    //creando constructor vacio
     public Habitacion(){
         disponible=true;
     }
-    
+    //creando constructor lleno
     public Habitacion(String Piso, int Numero, double PrecioHab){
     this.piso=Piso;
     this.numero=Numero;
