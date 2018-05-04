@@ -173,7 +173,7 @@ public class AdminHotel {
                 habitaciones.add(nuevaHabitacion);
             }
         }
-        System.out.println("*****BIENVENIDO AL HOTEL VIÑA RAFINHA***********");
+        System.out.println("*****BIENVENIDO AL HOTEL VIÃ‘A RAFINHA***********");
         System.out.println("Se han creado todas las habitaciones con exito!");
     }
     /**
@@ -437,7 +437,7 @@ public class AdminHotel {
                                     cumple = false;
                                 }
                                 else{
-                                    System.out.println("Lo maximo de días que se puede reservar son 7");
+                                    System.out.println("Lo maximo de dÃ­as que se puede reservar son 7");
                                 }
                             }
                             String idHabitacion = piso + numHabitacion;
@@ -452,7 +452,7 @@ public class AdminHotel {
                             reservacion.setNumeroHabitacion(numHabitacion);
                             reservacion.setDiasReservacion(diasReservacion);
                             reservacion.setPisoHabitacion(piso);
-                            reservacion.setInfoHuesped(Dui);
+                           reservacion.setInfoHuesped(Dui);
                             reservacion.setCostoNoche(CalcularPrecioHabitacion(numHabitacion, piso));
                             reservacion.setPaquete(null);
                             reservaciones.add(reservacion);
@@ -518,6 +518,12 @@ public class AdminHotel {
                 System.out.println("En que numero de habitacion se encuentra: ");
                 numHabitacion = leer.nextInt();
                 Scanner n = new Scanner(System.in);
+                String idHabitacion = piso + numHabitacion;
+                for(Habitacion h:habitaciones){ 
+                    if(idHabitacion.equals(h.getIDhabitacion())){
+                        h.setEstado(true);
+                    }
+                }
                 for (Reservacion r : reservaciones) {
                     if (r.getNumeroHabitacion() == numHabitacion && r.getPisoHabitacion().equals(piso)) {
                         System.out.println("Para solo seleccionar habitacion");
@@ -550,7 +556,12 @@ public class AdminHotel {
                                     System.out.println("Solo son 10 habitaciones por piso");
                                 }
                             }
-
+                        idHabitacion = piso + numHabitacion;
+                        for(Habitacion h:habitaciones){ 
+                            if(idHabitacion.equals(h.getIDhabitacion())){
+                                h.setEstado(false);
+                            }
+                        }
                         cumple = true;
                         while(cumple){
                             System.out.println("Cuantos dias se hospedara: ");
@@ -559,7 +570,7 @@ public class AdminHotel {
                                 cumple = false;
                             }
                             else{
-                                System.out.println("Lo maximo de días que se puede reservar son 7");
+                                System.out.println("Lo maximo de dÃ­as que se puede reservar son 7");
                             }
                         }
                         r.setNumeroHabitacion(numHabitacion);
@@ -577,7 +588,7 @@ public class AdminHotel {
     //Paquete
     public void CambiarPrecioPaquete(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("¿Que paquete desea cambiar? ");
+        System.out.println("Â¿Que paquete desea cambiar? ");
         String n = sc.nextLine();
         paquetes.forEach((Paquete paque) -> {
             if(paque.nombrePaquete.equals(n)){
@@ -590,7 +601,7 @@ public class AdminHotel {
     }
     public void CambiarContenidoPaquete(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("¿Que paquete desea cambiar? ");
+        System.out.println("Â¿Que paquete desea cambiar? ");
         String n = sc.nextLine();
         paquetes.forEach((Paquete paque) -> {
             if(paque.nombrePaquete.equals(n)){
