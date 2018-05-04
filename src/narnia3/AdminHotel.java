@@ -24,24 +24,26 @@ public class AdminHotel {
     public void menu(){
         int opcion;
         boolean corriendo=true;
-//SE IMPRIME EL MENU
-        System.out.println("***************MENU***************");
-        System.out.println("1.Agregar Cliente");
-        System.out.println("2.Habilitar habitaciones");
-        System.out.println("3.Habilitar piso");
-        System.out.println("4.Modificar habitacion");
-        System.out.println("5.Mostrar reservaciones de la semana");
-        System.out.println("6.Mostrar habitaciones disponibles");
-        System.out.println("7.Hacer reservacion");
-        System.out.println("8.Cancelar reservacion");
-        System.out.println("9.Modificar reservacion");
-        System.out.println("10.Modificar todas las habitaciones");
-        System.out.println("11.Salir");
+
         while(corriendo){
+            //SE IMPRIME EL MENU
+            System.out.println("***************MENU***************");
+            System.out.println("1.Agregar Cliente");
+            System.out.println("2.Habilitar habitaciones");
+            System.out.println("3.Habilitar piso");
+            System.out.println("4.Modificar habitacion");
+            System.out.println("5.Mostrar reservaciones de la semana");
+            System.out.println("6.Mostrar habitaciones disponibles");
+            System.out.println("7.Hacer reservacion");
+            System.out.println("8.Cancelar reservacion");
+            System.out.println("9.Modificar reservacion");
+            System.out.println("10.Modificar todas las habitaciones");
+            System.out.println("11.Salir");
             opcion=input.nextInt();
             switch(opcion){
                 case 1:
                     AgregarCliente();
+                    break;
                 case 2:
                     HabilitarHabitacion();
                     break;
@@ -72,8 +74,10 @@ public class AdminHotel {
                     break;
                 case 11:
                     corriendo=false;
+                    break;
                 default:
                     System.out.println("Ha ingresado una opcion invalida");
+                    break;
                 }
         }
     }    
@@ -155,6 +159,7 @@ public class AdminHotel {
                 habitaciones.add(nuevaHabitacion);
             }
         }
+        System.out.println("*****BIENVENIDO AL HOTEL VIÑA RAFINHA***********");
         System.out.println("Se han creado todas las habitaciones con exito!");
     }
     /**
@@ -168,12 +173,14 @@ public class AdminHotel {
         for(Habitacion h:habitaciones){
             if(h.getIDhabitacion().equals(habitacion)){
                 System.out.println("1.Modificar Precio" );
+                opcion=input.nextInt();
                 switch(opcion){
                     case 1:
                         double nuevoPrecio;
                         System.out.println("Ingrese el nuevo precio de la habitacion:");
                         nuevoPrecio=input.nextInt();
                         h.setPrecioHab(nuevoPrecio);
+                        System.out.println("El precio de la habitacion "+h.getIDhabitacion()+" ha sido actualizado con exito!");
                         break;
                 }
             }
@@ -189,6 +196,7 @@ public class AdminHotel {
         for(Habitacion h:habitaciones){
             h.setPrecioHab(nuevoPrecio);
         }
+        System.out.println("El precio de todas las Habitaciones ha sido actualizado con exito!");
     }
     /**
      * Cambia la disponibilidad de cierta habitacion
@@ -206,6 +214,7 @@ public class AdminHotel {
                 for(Habitacion h:habitaciones){
                     if(idHabitacion.equals(h.getIDhabitacion())){
                         h.setEstado(true);
+                        System.out.println(h.getIDhabitacion()+" ha sido habilitada");
                     }
                 }
                 break;
