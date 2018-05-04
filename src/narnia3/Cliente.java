@@ -192,7 +192,7 @@ public class Cliente {
                     costoTotal = (admin.CalcularPrecioHabitacion(numHabitacion, piso) * dias) + precioPaquete;
                     r.setCostoTotal(costoTotal);
                     r.setCostoNoche(admin.CalcularPrecioHabitacion(numHabitacion, piso));
-                    r.setDiasReservacion(r);
+                    r.setDiasReservacion(dias);
                     
                 }   
                 else{
