@@ -101,45 +101,52 @@ public class Cliente {
         System.out.println("DUI: ");
         this.Dui= leer.nextLine();
         
-        this.infoCliente= this.nombre + this.apellido + this.Dui + this.telefono + this.tarjetaCredito;
+        this.infoCliente= "Nombre: "+ this.nombre+ " Apellido: " + this.apellido+ " DUI: " + this.Dui+ " Telefono: " + this.telefono+ " Tarjeta de credito: " + this.tarjetaCredito;
+        reservacion.setInfoHuesped(infoCliente);
     }
     
     
     public void HacerReservacion(){
-        int n;
-        double l,costoTotal, precioPaquete;
-        String m;
+        int numHabitacion, opc, diasReservacion;
+        double costoTotal, precioPaquete;
+        String piso;
         
         System.out.println("Seleccione 1 para ver los paquetes disponibles o 2 si prefiere otro servicio: ");
-        n=leer.nextInt();
-        if(n==1){
+        opc=leer.nextInt();
+        if(opc==1){
             reservacion.mostrarPaquete();
             precioPaquete= reservacion.SeleccionarPaquete();
             admin.CrearHabitaciones();
             System.out.println("En que piso le gustaria la habitacion(A,B,C,D,E,F): ");
-            m=leer.nextLine();
+            piso=leer.nextLine();
             System.out.println("Que numero de habitacion deseraia(recuerde las pares son dobles y las impares sencillas): ");
-            n=leer.nextInt();
+            numHabitacion=leer.nextInt();
             System.out.println("Por cuantos dias desea resrvar la habitacion: ");
-            l=leer.nextDouble();
+            diasReservacion=leer.nextInt();
             
-            costoTotal= (admin.CalcularPrecioHabitacion(n, m)*l) + precioPaquete;
+            costoTotal= (admin.CalcularPrecioHabitacion(numHabitacion, piso)*diasReservacion) + precioPaquete;
             System.out.println("Su costo total sera de: " + "$"+costoTotal );
+            reservacion.setCostoTotal(costoTotal);
+            reservacion.setNumeroHabitacion(numHabitacion);
+            reservacion.setDiasReservacion(diasReservacion);
             admin.HabilitarHabitacion();
         }
         else{
             admin.CrearHabitaciones();
             System.out.println("En que piso le gustaria la habitacion(A,B,C,D,E,F): ");
-            m=leer.nextLine();
+            piso=leer.nextLine();
             System.out.println("Que numero de habitacion deseraia(recuerde las pares son dobles y las impares sencillas): ");
-            n=leer.nextInt();
-            System.out.println("Por cuantos dias desea resrvar la habitacion: ");
-            l=leer.nextDouble();
+            numHabitacion=leer.nextInt();
+            System.out.println("Por cuantos dias desea reservar la habitacion: ");
+            diasReservacion=leer.nextInt();
             
-            costoTotal= (admin.CalcularPrecioHabitacion(n, m)*l);
+            costoTotal= (admin.CalcularPrecioHabitacion(numHabitacion, piso)*diasReservacion);
             System.out.println("Su costo total sera de: " + "$"+costoTotal );
+            reservacion.setCostoTotal(costoTotal);
+            reservacion.setNumeroHabitacion(numHabitacion);
+            reservacion.setDiasReservacion(diasReservacion);
             admin.HabilitarHabitacion();
-            //hola
+            
         }
    
     }
