@@ -5,7 +5,6 @@
  */
 package narnia3;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 
 /**
@@ -15,11 +14,12 @@ import java.util.ArrayList;
 public class NARNIA3 {
 
     public static void main(String[] args) {
-        AdminHotel ADMIN = new AdminHotel();
+        AdminHotel AD = new AdminHotel();
     }
     public void menu(){
         AdminHotel Admin = new AdminHotel();
         Cliente CLIENTE = new Cliente();
+        Reservacion RES = new Reservacion();
         String opcion;
         Scanner input= new Scanner(System.in);
         System.out.println("***************MENU***************");
@@ -46,14 +46,19 @@ public class NARNIA3 {
                 Admin.ModificarHabitacion();
                 break;
             case 5:
+                Admin.AgregarCliente();
+                break;
             case 6:
                 Admin.MostrarHabitacionesDisponibles();
                 break;
             case 7:
                 CLIENTE.HacerReservacion();
+                RES.PrecioPaquete();
                 break;
             case 8:
             case 9:
+            default:
+                System.out.println("Ha ingresado una opcion invalida");
              
             }
     }
