@@ -101,13 +101,14 @@ public class Cliente {
         System.out.println("DUI: ");
         this.Dui= leer.nextLine();
         
-        this.infoCliente= this.nombre + this.apellido + this.Dui + this.telefono + this.tarjetaCredito;
+        this.infoCliente= "Nombre: "+ this.nombre+ " Apellido: " + this.apellido+ " DUI: " + this.Dui+ " Telefono: " + this.telefono+ " Tarjeta de credito: " + this.tarjetaCredito;
+        reservacion.setInfoHuesped(infoCliente);
     }
     
     
     public void HacerReservacion(){
-        int numHabitacion, opc;
-        double l,costoTotal, precioPaquete;
+        int numHabitacion, opc, diasReservacion;
+        double costoTotal, precioPaquete;
         String piso;
         
         System.out.println("Seleccione 1 para ver los paquetes disponibles o 2 si prefiere otro servicio: ");
@@ -121,10 +122,13 @@ public class Cliente {
             System.out.println("Que numero de habitacion deseraia(recuerde las pares son dobles y las impares sencillas): ");
             numHabitacion=leer.nextInt();
             System.out.println("Por cuantos dias desea resrvar la habitacion: ");
-            l=leer.nextDouble();
+            diasReservacion=leer.nextInt();
             
-            costoTotal= (admin.CalcularPrecioHabitacion(numHabitacion, piso)*l) + precioPaquete;
+            costoTotal= (admin.CalcularPrecioHabitacion(numHabitacion, piso)*diasReservacion) + precioPaquete;
             System.out.println("Su costo total sera de: " + "$"+costoTotal );
+            reservacion.setCostoTotal(costoTotal);
+            reservacion.setNumeroHabitacion(numHabitacion);
+            reservacion.setDiasReservacion(diasReservacion);
             admin.HabilitarHabitacion();
         }
         else{
@@ -133,11 +137,14 @@ public class Cliente {
             piso=leer.nextLine();
             System.out.println("Que numero de habitacion deseraia(recuerde las pares son dobles y las impares sencillas): ");
             numHabitacion=leer.nextInt();
-            System.out.println("Por cuantos dias desea resrvar la habitacion: ");
-            l=leer.nextDouble();
+            System.out.println("Por cuantos dias desea reservar la habitacion: ");
+            diasReservacion=leer.nextInt();
             
-            costoTotal= (admin.CalcularPrecioHabitacion(numHabitacion, piso)*l);
+            costoTotal= (admin.CalcularPrecioHabitacion(numHabitacion, piso)*diasReservacion);
             System.out.println("Su costo total sera de: " + "$"+costoTotal );
+            reservacion.setCostoTotal(costoTotal);
+            reservacion.setNumeroHabitacion(numHabitacion);
+            reservacion.setDiasReservacion(diasReservacion);
             admin.HabilitarHabitacion();
             
         }
