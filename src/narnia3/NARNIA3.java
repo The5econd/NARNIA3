@@ -25,6 +25,7 @@ public class NARNIA3 {
         Reservacion RES = new Reservacion();
         String opcion;
         Scanner input= new Scanner(System.in);
+        //SE IMPRIME EL MENU
         System.out.println("***************MENU***************");
         System.out.println("1.Ver reservaciones de la semana");
         System.out.println("2.Habilitar habitaciones");
@@ -35,7 +36,10 @@ public class NARNIA3 {
         System.out.println("7.Hacer reservacion");
         System.out.println("8.Cancelar reservacion");
         System.out.println("9.MOdificar reservacion");
+        //la variable opcion es transformada de String a Int para poder usarla en el switch
         opcion=input.next();
+        /*con un Switch mandamos a llamar a todos los metodos dandole uso a los 
+        objetos de las clases creados aneriormente*/
         int OP=Integer.parseInt(opcion);
         switch(OP){
             case 1:
