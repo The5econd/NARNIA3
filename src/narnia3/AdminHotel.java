@@ -52,7 +52,7 @@ public class AdminHotel {
                     ModificarHabitacion();
                     break;
                 case 5:
-                    AgregarCliente();
+                    //LO DE LAS SEMANAS
                     break;
                 case 6:
                     MostrarHabitacionesDisponibles();
