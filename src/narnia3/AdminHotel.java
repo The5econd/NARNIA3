@@ -1,4 +1,3 @@
-
 package narnia3;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -72,7 +71,7 @@ public class AdminHotel {
             for(int j=1;i<=numeroHabitaciones;j+=1){
                 Habitacion nuevaHabitacion= new Habitacion();
                 nuevaHabitacion.setNumHab(j);
-                nuevaHabitacion.setPrecioHab(500);
+                nuevaHabitacion.setPrecioHab(this.precioHabitacion);
                 switch(i){
                     case 1:
                         nuevaHabitacion.setPiso("A");
@@ -88,11 +87,9 @@ public class AdminHotel {
                         break;
                     case 5:
                         nuevaHabitacion.setPiso("E");
-                        nuevaHabitacion.setPrecioHab(550);
                         break;
                     case 6:
                         nuevaHabitacion.setPiso("F");
-                        nuevaHabitacion.setPrecioHab(550);
                         break;
                     default:
                         System.out.println("Ha habido un error creando las habitaciones");
@@ -182,7 +179,7 @@ public class AdminHotel {
         }
     }
     
-    double CalcularPrecioHabitacion(int n, String m){
+    double CalcularPrecioHabitacion(int n, String m){ //FUNCION HECHA POR PECHE
         for(Habitacion e : habitaciones){
             if(e.getNumHab()==n && e.getPiso().equals(m))
                 return e.getPrecioHab();
@@ -190,5 +187,14 @@ public class AdminHotel {
         return 0;
     }
     
-    
+    /**
+     * Muestra cuales habitaciones del hotel estan disponibles
+     */
+    void MostrarHabitacionesDisponibles(){
+        for(Habitacion h:habitaciones){
+            if(h.getEstado()){
+                System.out.println(h.getIDhabitacion()+" esta disponible");
+            }
+        }
+    }
 }
