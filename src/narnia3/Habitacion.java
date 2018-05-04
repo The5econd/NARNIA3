@@ -35,7 +35,7 @@ public class Habitacion {
         return precioHabitacion;
     }
     public String getIDhabitacion(){
-        return idHabitacion + numero;
+        return piso+String.valueOf(numero);
     }
     public boolean getEstado() {
         return disponible;

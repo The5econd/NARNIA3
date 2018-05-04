@@ -68,7 +68,7 @@ public class AdminHotel {
      */
     public void CrearHabitaciones(){
         for(int i=1;i<=numeroPisos;i+=1){
-            for(int j=1;i<=numeroHabitaciones;j+=1){
+            for(int j=1;j<=numeroHabitaciones;j+=1){
                 Habitacion nuevaHabitacion= new Habitacion();
                 nuevaHabitacion.setNumHab(j);
                 nuevaHabitacion.setPrecioHab(this.precioHabitacion);
@@ -102,7 +102,7 @@ public class AdminHotel {
     /**
      * Se modifica el precio de un cuarto de acuerdo al ID del cuarto proporcionado
      */
-    void ModificarHabitacion(){
+    public void ModificarHabitacion(){
         String habitacion="";
         int opcion=0;
         System.out.println("Que cuarto desea modificar: ");
@@ -118,15 +118,13 @@ public class AdminHotel {
                         h.setPrecioHab(nuevoPrecio);
                         break;
                 }
-            }else{
-                System.out.println("La habitacion buscada no existe");
             }
         }
     }
     /**
      * Cambia la disponibilidad de cierta habitacion
      */
-    void HabilitarHabitacion(){
+    public void HabilitarHabitacion(){
         String idHabitacion;
         int opcion=0;
         boolean habilitado;
@@ -139,19 +137,16 @@ public class AdminHotel {
                 for(Habitacion h:habitaciones){
                     if(idHabitacion.equals(h.getIDhabitacion())){
                         h.setEstado(true);
-                    }else{
-                        System.out.println("Este cuarto no existe");
                     }
                 }
                 break;
             case 2:
-                System.out.println("Ingrese el codigo de la habitacion a habiliar:");
+                System.out.println("Ingrese el codigo de la habitacion a deshabilitar:");
                 idHabitacion=input.next();
                 for(Habitacion h:habitaciones){ 
                     if(idHabitacion.equals(h.getIDhabitacion())){
                         h.setEstado(false);
-                    }else{
-                        System.out.println("Este cuarto no existe");
+                        System.out.println(h.getIDhabitacion()+" ha sido deshabilitada");
                     }
                 }
                 break;
@@ -163,7 +158,7 @@ public class AdminHotel {
     /**
      * Cambia la disponibilidad de Cierto Piso
      */
-    void HabilitarPiso(){
+    public void HabilitarPiso(){
         String piso;
         System.out.println("Ingrese el piso a modificar:");
         piso=input.next();
@@ -190,7 +185,7 @@ public class AdminHotel {
     Devuelve el precio de la habiacion elegida por el cliente
     */
     
-    double CalcularPrecioHabitacion(int numHabitacion  , String piso){ 
+    public double CalcularPrecioHabitacion(int numHabitacion  , String piso){ 
         for(Habitacion e : habitaciones){
             if(e.getNumHab()==numHabitacion && e.getPiso().equals(piso))
                 return e.getPrecioHab();
@@ -201,7 +196,7 @@ public class AdminHotel {
     /**
      * Muestra cuales habitaciones del hotel estan disponibles
      */
-    void MostrarHabitacionesDisponibles(){
+    public void MostrarHabitacionesDisponibles(){
         for(Habitacion h:habitaciones){
             if(h.getEstado()){
                 System.out.println(h.getIDhabitacion()+" esta disponible");
@@ -212,7 +207,7 @@ public class AdminHotel {
     /**
      * Agrega a un nuevo cliente al hotel y verifica si esta cliente ya exisitia
      */
-    void AgregarCliente(){
+    public void AgregarCliente(){
         boolean existeCliente=false;
         Cliente nuevoCliente = new Cliente();
         nuevoCliente.getInfoCliente();
