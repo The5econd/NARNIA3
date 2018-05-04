@@ -185,19 +185,6 @@ public class AdminHotel {
             }
         }
     }
-    /**
-     * Funcion hecha por Ricardo Villeda
-     * @param n
-     * @param m
-     * @return 
-     */
-    double CalcularPrecioHabitacion(int n, String m){ //FUNCION HECHA POR PECHE
-        for(Habitacion e : habitaciones){
-            if(e.getNumHab()==n && e.getPiso().equals(m))
-                return e.getPrecioHab();
-        }
-        return 0;
-    }
     
     /**
      * Muestra cuales habitaciones del hotel estan disponibles
