@@ -13,6 +13,15 @@ import java.util.ArrayList;
 public class Reservacion {
     ArrayList<Paquete> paquetes = new ArrayList<>();
     public String infoHuesped;
+
+    public String getPisoHabitacion() {
+        return pisoHabitacion;
+    }
+
+    public void setPisoHabitacion(String pisoHabitacion) {
+        this.pisoHabitacion = pisoHabitacion;
+    }
+    public String pisoHabitacion;
     public int numeroHabitacion;
     public int diasReservacion;
     public double costoNoche;

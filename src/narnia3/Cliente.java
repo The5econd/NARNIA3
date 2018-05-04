@@ -8,7 +8,10 @@ import java.util.Scanner;
  */
 public class Cliente {
     Reservacion reservacion = new Reservacion();
+    ArrayList<Reservacion> reservaciones = new ArrayList<>();
+    
     ArrayList<Habitacion>habitaciones= new ArrayList<>();
+    
     Scanner leer =  new Scanner(System.in);
     AdminHotel admin = new AdminHotel();
     Paquete paquete = new Paquete();
@@ -89,7 +92,13 @@ public class Cliente {
     
     
     
-    public void InfoCliente(){
+    
+    
+    public void HacerReservacion(){
+        int numHabitacion, opc, diasReservacion;
+        double costoTotal, precioPaquete;
+        String piso;
+        
         System.out.println("Nombre: ");
         this.nombre=leer.nextLine();
         System.out.println("Apellido: ");
@@ -103,13 +112,7 @@ public class Cliente {
         
         this.infoCliente= "Nombre: "+ this.nombre+ " Apellido: " + this.apellido+ " DUI: " + this.Dui+ " Telefono: " + this.telefono+ " Tarjeta de credito: " + this.tarjetaCredito;
         reservacion.setInfoHuesped(infoCliente);
-    }
-    
-    
-    public void HacerReservacion(){
-        int numHabitacion, opc, diasReservacion;
-        double costoTotal, precioPaquete;
-        String piso;
+        
         
         System.out.println("Seleccione 1 para ver los paquetes disponibles o 2 si prefiere otro servicio: ");
         opc=leer.nextInt();
@@ -129,7 +132,9 @@ public class Cliente {
             reservacion.setCostoTotal(costoTotal);
             reservacion.setNumeroHabitacion(numHabitacion);
             reservacion.setDiasReservacion(diasReservacion);
-            admin.HabilitarHabitacion();
+            reservacion.setPisoHabitacion(piso);
+            reservaciones.add(reservacion);
+            //admin.HabilitarHabitacion();
         }
         else{
             admin.CrearHabitaciones();
@@ -145,7 +150,9 @@ public class Cliente {
             reservacion.setCostoTotal(costoTotal);
             reservacion.setNumeroHabitacion(numHabitacion);
             reservacion.setDiasReservacion(diasReservacion);
-            admin.HabilitarHabitacion();
+            reservacion.setPisoHabitacion(piso);
+            reservaciones.add(reservacion);
+           //admin.HabilitarHabitacion();
             
         }
    
