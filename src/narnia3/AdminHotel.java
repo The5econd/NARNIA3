@@ -182,6 +182,13 @@ public class AdminHotel {
         }
     }
     
+    double CalcularPrecioHabitacion(int n, String m){
+        for(Habitacion e : habitaciones){
+            if(e.getNumHab()==n && e.getPiso().equals(m))
+                return e.getPrecioHab();
+        }
+        return 0;
+    }
     
     
 }
