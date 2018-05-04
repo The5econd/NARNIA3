@@ -7,19 +7,12 @@ import java.util.Scanner;
  * @author thesecond
  */
 public class Habitacion {
+    //creando todos los atributos del objeto
     private String piso;
     private int numero;
     private double precioHabitacion;
     private String idHabitacion;
     boolean disponible;
-    
-    public boolean getEstado() {
-        return disponible;
-    }
-
-    public void setEstado(boolean estado) {
-        this.disponible = estado;
-    }
     
     public Habitacion(){
         disponible=true;
@@ -44,6 +37,9 @@ public class Habitacion {
     public String getIDhabitacion(){
         return idHabitacion + numero;
     }
+    public boolean getEstado() {
+        return disponible;
+    }
     
     public void setPiso(String Piso){
         this.piso=Piso;
@@ -56,6 +52,9 @@ public class Habitacion {
     }
     public void setIDhabitacion(String idHab){
         this.idHabitacion=idHab;
+    }
+    public void setEstado(boolean estado) {
+        this.disponible = estado;
     }
 
 }
