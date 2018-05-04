@@ -17,8 +17,11 @@ public class NARNIA3 {
         AdminHotel AD = new AdminHotel();
     }
     public void menu(){
+        //se crea objeto de la clase AdminHotel
         AdminHotel Admin = new AdminHotel();
+        //se crea objeto de la clase CLiente
         Cliente CLIENTE = new Cliente();
+        //se crea objeto de la clase Reservacion
         Reservacion RES = new Reservacion();
         String opcion;
         Scanner input= new Scanner(System.in);
