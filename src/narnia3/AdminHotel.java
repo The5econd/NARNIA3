@@ -186,6 +186,18 @@ public class AdminHotel {
         }
     }
     
+    /*
+    Devuelve el precio de la habiacion elegida por el cliente
+    */
+    
+    double CalcularPrecioHabitacion(int numHabitacion  , String piso){ 
+        for(Habitacion e : habitaciones){
+            if(e.getNumHab()==numHabitacion && e.getPiso().equals(piso))
+                return e.getPrecioHab();
+        }
+        return 0;
+    }
+    
     /**
      * Muestra cuales habitaciones del hotel estan disponibles
      */
