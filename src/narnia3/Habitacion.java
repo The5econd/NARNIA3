@@ -24,7 +24,7 @@ public class Habitacion {
     this.precioHabitacion=PrecioHab;
     this.disponible=true;
     }
-    
+    //creando los GETTERS 
     public String getPiso(){
         return piso;
     }
@@ -41,6 +41,7 @@ public class Habitacion {
         return disponible;
     }
     
+    //CREANDO LOS SETTERS
     public void setPiso(String Piso){
         this.piso=Piso;
     }
