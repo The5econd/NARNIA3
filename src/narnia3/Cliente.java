@@ -106,40 +106,40 @@ public class Cliente {
     
     
     public void HacerReservacion(){
-        int n;
+        int numHabitacion, opc;
         double l,costoTotal, precioPaquete;
-        String m;
+        String piso;
         
         System.out.println("Seleccione 1 para ver los paquetes disponibles o 2 si prefiere otro servicio: ");
-        n=leer.nextInt();
-        if(n==1){
+        opc=leer.nextInt();
+        if(opc==1){
             reservacion.mostrarPaquete();
             precioPaquete= reservacion.SeleccionarPaquete();
             admin.CrearHabitaciones();
             System.out.println("En que piso le gustaria la habitacion(A,B,C,D,E,F): ");
-            m=leer.nextLine();
+            piso=leer.nextLine();
             System.out.println("Que numero de habitacion deseraia(recuerde las pares son dobles y las impares sencillas): ");
-            n=leer.nextInt();
+            numHabitacion=leer.nextInt();
             System.out.println("Por cuantos dias desea resrvar la habitacion: ");
             l=leer.nextDouble();
             
-            costoTotal= (admin.CalcularPrecioHabitacion(n, m)*l) + precioPaquete;
+            costoTotal= (admin.CalcularPrecioHabitacion(numHabitacion, piso)*l) + precioPaquete;
             System.out.println("Su costo total sera de: " + "$"+costoTotal );
             admin.HabilitarHabitacion();
         }
         else{
             admin.CrearHabitaciones();
             System.out.println("En que piso le gustaria la habitacion(A,B,C,D,E,F): ");
-            m=leer.nextLine();
+            piso=leer.nextLine();
             System.out.println("Que numero de habitacion deseraia(recuerde las pares son dobles y las impares sencillas): ");
-            n=leer.nextInt();
+            numHabitacion=leer.nextInt();
             System.out.println("Por cuantos dias desea resrvar la habitacion: ");
             l=leer.nextDouble();
             
-            costoTotal= (admin.CalcularPrecioHabitacion(n, m)*l);
+            costoTotal= (admin.CalcularPrecioHabitacion(numHabitacion, piso)*l);
             System.out.println("Su costo total sera de: " + "$"+costoTotal );
             admin.HabilitarHabitacion();
-            //hola
+            
         }
    
     }
