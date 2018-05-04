@@ -130,7 +130,7 @@ public class Cliente {
             System.out.println("Por cuantos dias desea resrvar la habitacion: ");
             l=leer.nextDouble();
             
-            costoTotal= (admin.CalcularPrecioHabitaciones(n, m)*l) + precioPaquete;
+            costoTotal= (admin.CalcularPrecioHabitacion(n, m)*l) + precioPaquete;
             System.out.println("Su costo total sera de: " + "$"+costoTotal );
             admin.HabilitarHabitacion();
         }
@@ -143,7 +143,7 @@ public class Cliente {
             System.out.println("Por cuantos dias desea resrvar la habitacion: ");
             l=leer.nextDouble();
             
-            costoTotal= (admin.CalcularPrecioHabitaciones(n, m)*l);
+            costoTotal= (admin.CalcularPrecioHabitacion(n, m)*l);
             System.out.println("Su costo total sera de: " + "$"+costoTotal );
             admin.HabilitarHabitacion();
             //hola
