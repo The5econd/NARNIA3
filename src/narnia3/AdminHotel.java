@@ -99,7 +99,9 @@ public class AdminHotel {
         }
         System.out.println("Se han creado todas las habitaciones con exito!");
     }
-    
+    /**
+     * Se modifica el precio de un cuarto de acuerdo al ID del cuarto proporcionado
+     */
     void ModificarHabitacion(){
         String habitacion="";
         int opcion=0;
@@ -121,7 +123,9 @@ public class AdminHotel {
             }
         }
     }
-    
+    /**
+     * Cambia la disponibilidad de cierta habitacion
+     */
     void HabilitarHabitacion(){
         String idHabitacion;
         int opcion=0;
@@ -156,6 +160,9 @@ public class AdminHotel {
         }
     }
     
+    /*
+    Cambia la disponibilidad de un determinado piso
+    */
     void HabilitarPiso(){
         String piso;
         System.out.println("Ingrese el piso a modificar:");
@@ -178,7 +185,12 @@ public class AdminHotel {
             }
         }
     }
-    
+    /**
+     * Funcion hecha por Ricardo Villeda
+     * @param n
+     * @param m
+     * @return 
+     */
     double CalcularPrecioHabitacion(int n, String m){ //FUNCION HECHA POR PECHE
         for(Habitacion e : habitaciones){
             if(e.getNumHab()==n && e.getPiso().equals(m))
@@ -195,6 +207,25 @@ public class AdminHotel {
             if(h.getEstado()){
                 System.out.println(h.getIDhabitacion()+" esta disponible");
             }
+        }
+    }
+    
+    /**
+     * Agrega a un nuevo cliente al hotel y verifica si esta cliente ya exisitia
+     */
+    void AgregarCliente(){
+        boolean existeCliente=false;
+        Cliente nuevoCliente = new Cliente();
+        nuevoCliente.InfoCliente();
+        for(Cliente c:clientes){
+            if(c.getDui().equals(nuevoCliente.getDui())){
+                existeCliente=true;
+            }
+        }
+        if(existeCliente){
+            System.out.println("Este cliente ya existia en los registros del hotel");
+        }else{
+            clientes.add(nuevoCliente);
         }
     }
 }
