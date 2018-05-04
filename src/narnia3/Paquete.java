@@ -13,11 +13,15 @@ public class Paquete {
     String nombrePaquete;
     String contenidoPaquete;
     double precioPaquete;
+    boolean disponible;
+    boolean premium;
 
     public Paquete(String nombrePaquete, String contenidoPaquete, double precioPaquete) {
         this.nombrePaquete = nombrePaquete;
         this.contenidoPaquete = contenidoPaquete;
         this.precioPaquete = precioPaquete;
+        this.disponible=true;
+        this.premium=true;
     }
 
     public Paquete() {
@@ -47,4 +51,19 @@ public class Paquete {
         this.precioPaquete = precioPaquete;
     }
     
+    public boolean getEstado() {
+        return disponible;
+    }
+    
+    public void setEstado(boolean estado) {
+        this.disponible = estado;
+    }
+    
+    public boolean getPremium() {
+        return premium;
+    }
+    
+    public void setPremium(boolean PR) {
+        this.premium = PR;
+    }
 }
