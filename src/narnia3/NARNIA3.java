@@ -35,7 +35,7 @@ public class NARNIA3 {
         System.out.println("6.Mostrar habitaciones disponibles");
         System.out.println("7.Hacer reservacion");
         System.out.println("8.Cancelar reservacion");
-        System.out.println("9.MOdificar reservacion");
+        System.out.println("9.Modificar reservacion");
         //la variable opcion es transformada de String a Int para poder usarla en el switch
         opcion=input.next();
         /*con un Switch mandamos a llamar a todos los metodos dandole uso a los 
@@ -63,7 +63,11 @@ public class NARNIA3 {
                 RES.PrecioPaquete();
                 break;
             case 8:
+                CLIENTE.CancelarReservacion();
+                break;
             case 9:
+                CLIENTE.ModificarReservacion();
+                break;
             default:
                 System.out.println("Ha ingresado una opcion invalida");
              

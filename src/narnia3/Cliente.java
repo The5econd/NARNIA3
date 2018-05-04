@@ -116,7 +116,9 @@ public class Cliente {
         opc = leer.nextInt();
         if (opc == 1) {
             reservacion.mostrarPaquete();
-            precioPaquete = reservacion.PrecioPaquete();
+            System.out.println("Que paquete desea?");
+            nombrePaquete = leer.nextLine();
+            precioPaquete = reservacion.PrecioPaquete(nombrePaquete);
             admin.CrearHabitaciones();
             System.out.println("En que piso le gustaria la habitacion(A,B,C,D,E,F): ");
             piso = leer.nextLine();
@@ -124,14 +126,14 @@ public class Cliente {
             numHabitacion = leer.nextInt();
             System.out.println("Por cuantos dias desea resrvar la habitacion: ");
             diasReservacion = leer.nextInt();
-
             costoTotal = (admin.CalcularPrecioHabitacion(numHabitacion, piso) * diasReservacion) + precioPaquete;
-            System.out.println("Su costo total sera de: " + "$" + costoTotal);
+            System.out.println("Su costo total sera de: " + "$" + costoTotal);   
             reservacion.setCostoNoche(admin.CalcularPrecioHabitacion(numHabitacion, piso));
             reservacion.setCostoTotal(costoTotal);
             reservacion.setNumeroHabitacion(numHabitacion);
             reservacion.setDiasReservacion(diasReservacion);
             reservacion.setPisoHabitacion(piso);
+            reservacion.setNombrePaquete(nombrePaquete);
             reservaciones.add(reservacion);
             
         } else {
@@ -142,7 +144,6 @@ public class Cliente {
             numHabitacion = leer.nextInt();
             System.out.println("Por cuantos dias desea reservar la habitacion: ");
             diasReservacion = leer.nextInt();
-
             costoTotal = (admin.CalcularPrecioHabitacion(numHabitacion, piso) * diasReservacion);
             System.out.println("Su costo total sera de: " + "$" + costoTotal);
             reservacion.setCostoTotal(costoTotal);
@@ -152,13 +153,10 @@ public class Cliente {
             reservacion.setCostoNoche(admin.CalcularPrecioHabitacion(numHabitacion, piso));
             reservacion.setNombrePaquete(null);
             reservaciones.add(reservacion);
-            
-
         }
 
     }
 
-    
     //Modifica la reservacion, con o sin paquete.
     public void ModificarReservacion() {
         String piso;
@@ -177,8 +175,8 @@ public class Cliente {
                 System.out.println("2-Para solo seleccionar habitacion");
                 opc=leer.nextInt();
                 if (opc == 1) {
-                    reservacion.mostrarPaquete();;
-                    precioPaquete = reservacion.PrecioPaquete();
+                    reservacion.mostrarPaquete();
+                    precioPaquete = reservacion.PrecioPaquete(reservacion.Paquete);
                     admin.MostrarHabitacionesDisponibles();
                     System.out.println("Que piso prefiere: ");
                     piso = leer.nextLine();
@@ -209,9 +207,6 @@ public class Cliente {
                     r.setCostoNoche(admin.CalcularPrecioHabitacion(numHabitacion, piso));
                     r.setDiasReservacion(dias);
                 }   
-                
-                
-
             }
 
         }

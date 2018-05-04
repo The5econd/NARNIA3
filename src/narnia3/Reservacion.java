@@ -13,7 +13,21 @@ import java.util.ArrayList;
 public class Reservacion {
     ArrayList<Paquete> paquetes = new ArrayList<>();
     public String infoHuesped;
+    public String pisoHabitacion;
+    public int numeroHabitacion;
+    public int diasReservacion;
+    public double costoNoche;
+    public double costoTotal;
+    public String Paquete;
 
+    public String getPaquete() {
+        return Paquete;
+    }
+
+    public void setPaquete(String Paquete) {
+        this.Paquete = Paquete;
+    }
+    
     public String getPisoHabitacion() {
         return pisoHabitacion;
     }
@@ -21,19 +35,13 @@ public class Reservacion {
     public void setPisoHabitacion(String pisoHabitacion) {
         this.pisoHabitacion = pisoHabitacion;
     }
-    public String pisoHabitacion;
-    public int numeroHabitacion;
-    public int diasReservacion;
-    public double costoNoche;
-    public double costoTotal;
-    public String nombrePaquete;
-
+    
     public String getNombrePaquete() {
-        return nombrePaquete;
+        return Paquete;
     }
 
     public void setNombrePaquete(String nombrePaquete) {
-        this.nombrePaquete = nombrePaquete;
+        this.Paquete = nombrePaquete;
     }
 
     public ArrayList<Paquete> getPaquetes() {
@@ -93,7 +101,7 @@ public class Reservacion {
         this.diasReservacion = diasReservacion;
         this.costoNoche = costoNoche;
         this.costoTotal = costoTotal;
-        this.nombrePaquete = nombrePaquete;
+        this.Paquete = nombrePaquete;
     }
     
     public void CambiarPrecioPaquete(){
@@ -162,22 +170,19 @@ public class Reservacion {
         }
     }
     
-    private double SeleccionarPaquete(){
+    private double SeleccionarPaquete(String Nombre){
         Scanner sc = new Scanner(System.in);
-        String Pack;
-        System.out.println("¿Que paquete desea?");
-        Pack = sc.nextLine();
         double precio = -1;
         for (Paquete paques : paquetes){
-            if(paques.nombrePaquete.equals(Pack)){
-                precio = paques.precioPaquete; 
+            if(paques.nombrePaquete.equals(Nombre)){
+                precio = paques.precioPaquete;
             }
         }
         return precio;
     }
     
-    public double PrecioPaquete(){
-        double precio = SeleccionarPaquete();
+    public double PrecioPaquete(String Nombre){
+        double precio = SeleccionarPaquete(Nombre);
         if(precio == -1){
             System.out.println("Su paquete no fue encontrado");
             return 0;
