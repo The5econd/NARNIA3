@@ -170,19 +170,19 @@ public class Reservacion {
         }
     }
     
-    private double SeleccionarPaquete(){
+    private double SeleccionarPaquete(String Nombre){
         Scanner sc = new Scanner(System.in);
         double precio = -1;
         for (Paquete paques : paquetes){
-            if(paques.nombrePaquete.equals(Paquete)){
+            if(paques.nombrePaquete.equals(Nombre)){
                 precio = paques.precioPaquete;
             }
         }
         return precio;
     }
     
-    public double PrecioPaquete(){
-        double precio = SeleccionarPaquete();
+    public double PrecioPaquete(String Nombre){
+        double precio = SeleccionarPaquete(Nombre);
         if(precio == -1){
             System.out.println("Su paquete no fue encontrado");
             return 0;
