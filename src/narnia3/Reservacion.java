@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 package narnia3;
-import java.util.Scanner;
-import java.util.ArrayList;
 /**
  *
  * @author javie
  */
 public class Reservacion {
-    ArrayList<Paquete> paquetes = new ArrayList<>();
     public String infoHuesped;
     public String pisoHabitacion;
     public int numeroHabitacion;
@@ -35,22 +32,7 @@ public class Reservacion {
     public void setPisoHabitacion(String pisoHabitacion) {
         this.pisoHabitacion = pisoHabitacion;
     }
-    
-    public String getNombrePaquete() {
-        return Paquete;
-    }
 
-    public void setNombrePaquete(String nombrePaquete) {
-        this.Paquete = nombrePaquete;
-    }
-
-    public ArrayList<Paquete> getPaquetes() {
-        return paquetes;
-    }
-
-    public void setPaquetes(ArrayList<Paquete> paquetes) {
-        this.paquetes = paquetes;
-    }
     
     public String getInfoHuesped() {
         return infoHuesped;
@@ -93,13 +75,6 @@ public class Reservacion {
     }
 
     public Reservacion() {
-        if(paquetes == null || paquetes.isEmpty()){
-            Paquete paqueteBasico = new Paquete("Basico","Acceso a la pisina y acceso a internet ilimitado",10);
-            paquetes.add(paqueteBasico);
-            Paquete paquetePremium = new Paquete("Premium","acceso al buffet de desayuno, acceso ilimitado a la pisina, servicio a la habitacion,"
-                    + "acceso ilimitado al minibar y acceso a internet ilimitado",150);
-            paquetes.add(paquetePremium);
-        }
     }
     
     public Reservacion(String infoHuesped, int numeroHabitacion, int diasReservacion, double costoNoche, double costoTotal, String nombrePaquete) {
@@ -109,79 +84,5 @@ public class Reservacion {
         this.costoNoche = costoNoche;
         this.costoTotal = costoTotal;
         this.Paquete = nombrePaquete;
-    }
-    
-    public void CambiarPrecioPaquete(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("¿Que paquete desea cambiar? ");
-        String n = sc.nextLine();
-        paquetes.forEach((Paquete paque) -> {
-            if(paque.nombrePaquete.equals(n)){
-                System.out.println("Nuevo precio del paquete: ");
-                double precioNuevo = sc.nextDouble();
-                paque.precioPaquete = precioNuevo;
-            }
-            else{
-                System.out.println("El paquete que desea no existe o ya no esta disponible");
-            }
-        });
-    }
-    
-    public void CambiarContenidoPaquete(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("¿Que paquete desea cambiar? ");
-        String n = sc.nextLine();
-        paquetes.forEach((Paquete paque) -> {
-            if(paque.nombrePaquete.equals(n)){
-                System.out.println("Nuevo contenido del paquete: ");
-                String precioNuevo = sc.nextLine();
-                paque.contenidoPaquete = precioNuevo;
-            }
-            else{
-                System.out.println("El paquete que desea no existe o ya no esta disponible");
-            }
-        });
-    }
-    
-    public void mostrarPaquete(){
-        paquetes.forEach((Paquete paque) -> {
-            System.out.println(paque.nombrePaquete+" "+paque.contenidoPaquete+"  $"+paque.precioPaquete);
-        });
-    }
-    
-    public void CrearPaquete(){  
-        Scanner sc = new Scanner(System.in);
-        String nuevoNombrePaquete,contenidoPaquete;
-        double precioPaquete;
-        System.out.println("Introduzca el nombre del paquete: ");
-        nuevoNombrePaquete = sc.nextLine();
-        System.out.println("Introduzca el contenido del paquete: ");
-        contenidoPaquete = sc.nextLine();
-        System.out.println("Introduzca el precio del paquete: ");
-        precioPaquete = sc.nextDouble();
-        Paquete nuevoPaquete = new Paquete(nuevoNombrePaquete,contenidoPaquete,precioPaquete);
-        paquetes.add(nuevoPaquete);
-    }
-    
-    private double SeleccionarPaquete(String Nombre){
-        Scanner sc = new Scanner(System.in);
-        double precio = -1;
-        for (Paquete paques : paquetes){
-            if(paques.nombrePaquete.equals(Nombre)){
-                precio = paques.precioPaquete;
-            }
-        }
-        return precio;
-    }
-    
-    public double PrecioPaquete(String Nombre){
-        double precio = SeleccionarPaquete(Nombre);
-        if(precio == -1){
-            System.out.println("Su paquete no fue encontrado");
-            return 0;
-        }
-        else{
-            return precio;
-        }
     }
 }
