@@ -160,9 +160,9 @@ public class AdminHotel {
         }
     }
     
-    /*
-    Cambia la disponibilidad de un determinado piso
-    */
+    /**
+     * Cambia la disponibilidad de Cierto Piso
+     */
     void HabilitarPiso(){
         String piso;
         System.out.println("Ingrese el piso a modificar:");
